@@ -1,0 +1,20 @@
+{
+    "name": "php-system-template/system-template",
+    "description": "Basic PHP template for systems with basic authentication",
+    "type": "library",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    },
+    "license": "ISC",
+    "autoload": {
+        "psr-4": {
+            "PhpSystemTemplate\\SystemTemplate\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aldrin Caballero",
+            "email": "caballeroaldrin02@gmail.com"
+        }
+    ]
+}
