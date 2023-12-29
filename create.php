@@ -63,11 +63,14 @@ class {$name} {
 }
 
 function createView($name) {
-    $viewContent = "<?php
-    
-";
+    $viewContent = "
+{# HTML/PHP content goes here.. #}
+<h1>I'm from <code>/{$name}</code></h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a purus auctor, lobortis ipsum sed, egestas nulla.</p>
 
-    $filename = "src/View/{$name}.php";
+";
+    createDIR("src/View/{$name}");
+    $filename = "src/View/{$name}/index.twig";
 
     if (file_exists($filename)) {
         echo "View file already exists: $filename\n";
@@ -76,3 +79,13 @@ function createView($name) {
         echo "View file created: $filename\n";
     }
 }
+
+
+
+function createDIR($dir) {
+    if (!file_exists($dir)) {
+        mkdir($dir, 0777, true);
+    }
+}
+
+

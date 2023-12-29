@@ -1,25 +1,30 @@
 <?php
-
-require '../vendor/autoload.php';
-
-$rootDirectory = dirname(__DIR__); // Get the root directory of your project
+require_once '../vendor/autoload.php';
+$rootDirectory = dirname(__DIR__);
 
 $loader = new \Twig\Loader\FilesystemLoader([$rootDirectory.'/App', $rootDirectory.'/src/View']);
 $twig = new \Twig\Environment($loader);
 
-// Get the requested route from the URL
-$requestUri = trim($_SERVER['REQUEST_URI'], '/');
-$route = ($requestUri !== '') ? $requestUri : 'home';
+function Route($path, $callback = null) {
+    global $twig;
+    $requestUri = trim($_SERVER['REQUEST_URI'], '/');
+    $route = ($requestUri !== '') ? $requestUri : '/';
+    
+    if ($route !== $path) {
+        return;
+    }
 
-// Use the route to determine the view file
-$viewFile = "{$route}/index.twig";
+    $viewFile = "{$path}/index.twig";
+    echo $twig->render('index.twig', [
+        'title' => ucfirst($route),
+        'content' => file_exists("../src/View/{$viewFile}") ? $twig->render($viewFile) : (
+            file_exists("../src/View/LandingPage/index.twig") ? $twig->render('LandingPage/index.twig') : 'Page not found'
+        ),
+    ]);
 
-// Output some debugging information
-echo "Requested Route: $route<br>";
-echo "Template Path: ../src/View/{$viewFile}<br>";
-
-// Render the main template, passing the title and including the dynamic content
-echo $twig->render('index.twig', [
-    'title' => ucfirst($route), // You can customize the title based on the route
-    'content' => file_exists("../src/View/{$viewFile}") ? $twig->render($viewFile) : 'Page not found',
-]);
+    if ($callback && is_callable($callback)) {
+        $callback();
+    }
+}
+require_once './Routes.php';
+?>
