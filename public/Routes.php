@@ -1,6 +1,7 @@
 <?php
 
 // Your main routes goes here
+
 Route('/', function() {
     // Your additional logic landingpage
 });
