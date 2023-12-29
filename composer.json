@@ -3,7 +3,8 @@
     "description": "Basic PHP template for systems with basic authentication",
     "type": "library",
     "require": {
-        "phpmailer/phpmailer": "^6.9"
+        "phpmailer/phpmailer": "^6.9",
+        "twig/twig": "^3.8"
     },
     "license": "ISC",
     "autoload": {

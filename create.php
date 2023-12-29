@@ -64,7 +64,7 @@ class {$name} {
 
 function createView($name) {
     $viewContent = "<?php
-
+    
 ";
 
     $filename = "src/View/{$name}.php";
