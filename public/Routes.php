@@ -2,20 +2,20 @@
 
 // Your main routes goes here
 
-Route('/', function() {
+Route('/', 'get', function() {
     // Your additional logic landingpage
 });
 
 // Example routes
-Route('home', function() {
+Route('home', 'get', function() {
     // Your additional logic for the 'home' route
 });
 
-Route('about', function() {
+Route('about', 'get', function() {
     // Your additional logic for the 'about' route
 });
 
 
-Route('contact', function() {
+Route('contact', 'get', function() {
     // Your additional logic for the 'contact' route
 });

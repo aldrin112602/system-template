@@ -5,7 +5,7 @@ $rootDirectory = dirname(__DIR__);
 $loader = new \Twig\Loader\FilesystemLoader([$rootDirectory.'/App', $rootDirectory.'/src/View']);
 $twig = new \Twig\Environment($loader);
 
-function Route($path, $callback = null) {
+function Route($path, $method, $callback = null) {
     global $twig;
     $requestUri = trim($_SERVER['REQUEST_URI'], '/');
     $route = ($requestUri !== '') ? $requestUri : '/';
@@ -23,6 +23,23 @@ function Route($path, $callback = null) {
     ]);
 
     if ($callback && is_callable($callback)) {
+        switch ($method) {
+            case 'get':
+                # code...
+                break;
+            case 'post':
+                # code...
+                break;
+            case 'delete':
+                # code...
+                break;
+            case 'put':
+                # code...
+                break;
+            default:
+                # code...
+                break;
+        }
         $callback();
     }
 }
