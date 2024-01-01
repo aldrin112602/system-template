@@ -25,5 +25,8 @@ Route('Login', 'get', function() {
 });
 
 Route('Login', 'post', function() {
-    // Your additional logic for the 'contact' route
+    return [
+        'username' => $_POST['username'],
+        'password' => $_POST['password']
+    ];
 });

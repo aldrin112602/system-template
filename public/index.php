@@ -20,8 +20,8 @@ function Route($path, $method, $callback = null) {
         if($_SERVER['REQUEST_METHOD'] == 'GET' && $method == 'get') {
             echo $twig->render('index.twig', [
                 'title' => ucfirst($route),
-                'content' => file_exists("../src/View/{$viewFile}") ? $twig->render($viewFile) : (
-                    file_exists("../src/View/LandingPage/index.twig") ? $twig->render('LandingPage/index.twig') : 'Page not found'
+                'content' => file_exists("../src/View/{$viewFile}") ? $twig->render($viewFile, ($callback && is_callable($callback)) ? $callback() ?? [] : []) : (
+                    file_exists("../src/View/LandingPage/index.twig") ? $twig->render('LandingPage/index.twig', ($callback && is_callable($callback)) ? $callback() ?? [] : []) : 'Page not found'
                 ),
             ]);
         }
@@ -29,14 +29,10 @@ function Route($path, $method, $callback = null) {
         if($_SERVER['REQUEST_METHOD'] == 'POST' && $method == 'post') {
             echo $twig->render('index.twig', [
                 'title' => ucfirst($route),
-                'content' => file_exists("../src/View/{$viewFile}") ? $twig->render($viewFile) : (
-                    file_exists("../src/View/LandingPage/index.twig") ? $twig->render('LandingPage/index.twig') : 'Page not found'
+                'content' => file_exists("../src/View/{$viewFile}") ? $twig->render($viewFile, ($callback && is_callable($callback)) ? $callback() ?? [] : []) : (
+                    file_exists("../src/View/LandingPage/index.twig") ? $twig->render('LandingPage/index.twig', ($callback && is_callable($callback)) ? $callback() ?? [] : []) : 'Page not found'
                 ),
             ]);
-        }
-
-        if ($callback && is_callable($callback)) {
-            $callback();
         }
 
         // Exit the function after rendering the matched route
