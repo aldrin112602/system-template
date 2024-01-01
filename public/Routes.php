@@ -1,29 +1,13 @@
 <?php
-
-// Your main routes goes here
-
-Route('/', 'get', function() {
-    // Your additional logic landingpage
-});
-
-// Example routes
-Route('home', 'get', function() {
-    // Your additional logic for the 'home' route
-});
-
-Route('about', 'get', function() {
-    // Your additional logic for the 'about' route
-});
+// GET REQUEST
+Route('/', 'get');
+Route('home', 'get');
+Route('about', 'get');
+Route('contact', 'get');
+Route('Login', 'get');
 
 
-Route('contact', 'get', function() {
-    // Your additional logic for the 'contact' route
-});
-
-Route('Login', 'get', function() {
-    // Your additional logic for the 'contact' route
-});
-
+// POST REQUEST
 Route('Login', 'post', function() {
     return [
         'username' => $_POST['username'],
