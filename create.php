@@ -1,4 +1,16 @@
 <?php
+/**
+ * CLI script for generating controller, model, and view files.
+ *
+ * Usage: php create.php <type> <name>
+ *   - <type>: Type of file to create (controller, model, view)
+ *   - <name>: Name of the file to be created (camelCase)
+ *
+ * Example:
+ *   php create.php controller MyController
+ *   php create.php model MyModel
+ *   php create.php view MyView
+ */
 
 if ($argc < 3) {
     echo "Usage: php create.php <type> <name>\n";
@@ -22,10 +34,15 @@ switch ($type) {
         break;
 
     default:
-        echo "Invalid type. Supported types: controller, model\n";
+        echo "Invalid type. Supported types: controller, model, view\n";
         exit(1);
 }
 
+/**
+ * Creates a controller file with the specified name.
+ *
+ * @param string $name Name of the controller
+ */
 function createController($name) {
     $controllerContent = "<?php
 
@@ -44,6 +61,11 @@ class {$name} {
     }
 }
 
+/**
+ * Creates a model file with the specified name.
+ *
+ * @param string $name Name of the model
+ */
 function createModel($name) {
     $modelContent = "<?php
 
@@ -62,6 +84,11 @@ class {$name} {
     }
 }
 
+/**
+ * Creates a view file with the specified name.
+ *
+ * @param string $name Name of the view
+ */
 function createView($name) {
     $viewContent = "
 {# HTML/PHP content goes here.. #}
@@ -80,12 +107,13 @@ function createView($name) {
     }
 }
 
-
-
+/**
+ * Creates a directory if it doesn't exist.
+ *
+ * @param string $dir Directory path
+ */
 function createDIR($dir) {
     if (!file_exists($dir)) {
         mkdir($dir, 0777, true);
     }
 }
-
-
