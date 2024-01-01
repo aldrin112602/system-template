@@ -19,3 +19,7 @@ Route('about', 'get', function() {
 Route('contact', 'get', function() {
     // Your additional logic for the 'contact' route
 });
+
+Route('Login', 'get', function() {
+    // Your additional logic for the 'contact' route
+});
