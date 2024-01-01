@@ -23,3 +23,7 @@ Route('contact', 'get', function() {
 Route('Login', 'get', function() {
     // Your additional logic for the 'contact' route
 });
+
+Route('Login', 'post', function() {
+    // Your additional logic for the 'contact' route
+});
